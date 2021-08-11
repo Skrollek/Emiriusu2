@@ -1,8 +1,15 @@
-#include "engine/emiriusu.hpp"
+#include "engine/Emiriusu.hpp"
 
-int main () {
-    
-    Emiriusu::Engine::Get().Init();
-    
-    return 0;
+class TheAStrategicGame : public Emiriusu::Application {
+
+public:
+
+    TheAStrategicGame () {}
+
+    ~TheAStrategicGame () {}
+};
+
+Emiriusu::Application* Emiriusu::ApplicationNew () {
+
+    return new TheAStrategicGame ();
 }

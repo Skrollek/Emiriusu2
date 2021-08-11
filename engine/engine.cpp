@@ -12,7 +12,7 @@ static void key_callback (GLFWwindow* window, int key, int scancode, int action,
 
 namespace Emiriusu {
 
-    Engine::Engine () {
+    Application::Application () {
 
         glfwSetErrorCallback (error_callback);
 
@@ -33,18 +33,13 @@ namespace Emiriusu {
         glfwSetKeyCallback (window, key_callback);
     }
 
-    Engine::~Engine () {
+    Application::~Application () {
 
         glfwDestroyWindow (window);
         glfwTerminate ();
     }
 
-    Engine& Engine::Get () {
-        static Engine instance;
-        return instance;
-    }
-
-    void Engine::Init () {
+    void Application::Run () {
 
         while (!glfwWindowShouldClose (this->window)) {
         

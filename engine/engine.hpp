@@ -9,7 +9,7 @@
 
 namespace Emiriusu {
 
-    class Engine {
+    class Application {
 
     private:
 
@@ -18,15 +18,15 @@ namespace Emiriusu {
 
         GLFWwindow* window;
 
-        Engine ();
-        Engine (const Engine& engine);
-        ~Engine ();
-
     public:
 
-        static Engine& Get ();
-        void Init ();
+        Application ();
+        virtual ~Application ();
+
+        void Run ();
     };
+
+    Application* ApplicationNew ();
 }
 
 #endif
