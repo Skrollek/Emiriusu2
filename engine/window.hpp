@@ -5,26 +5,36 @@
 #include <GLFW/glfw3.h>
 #include <GL/gl.h>
 
+#include "config.hpp"
 #include "applicationEvent.hpp"
 
 #include <string>
 
 namespace Emiriusu {
 
-    class Window {
+    struct WindowProps {
 
+        std::string title;
         int width, height;
-        std::string name;
-        GLFWwindow* glWindow;
+
+        WindowProps (const std::string& initialTitle = "Emiriusu2", int initialWidth = 640, int initialHeight = 480) :
+            title (initialTitle), width (initialWidth), height (initialHeight) {}
+    };
+
+    class Window {
 
     public:
 
-        Window (std::string initialName, int initialWidth, int initialHeight);
-        ~Window ();
+        virtual ~Window () {}
+        virtual void OnUpdate () = 0;
 
-        bool isClosed ();
-        void close ();
-        void PollEvents ();
+        virtual int GetWidth () const = 0;
+        virtual int GetHeight () const = 0;
+
+        virtual void SetVSync (bool enabled) = 0;
+        virtual bool IsVSync () const = 0;
+
+        static Window* Create (const WindowProps& props = WindowProps ());
     };
 }
 

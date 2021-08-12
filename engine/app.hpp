@@ -10,9 +10,7 @@ namespace Emiriusu {
     class Application {
 
     private:
-
-        int width;
-        int height;
+        bool running = true;
 
         Window* window;
 

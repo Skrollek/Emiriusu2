@@ -4,39 +4,30 @@ static void error_callback (int error, const char* description) {
     std::cerr << "Error: " << description << '\n';
 }
 
+extern bool isGLFWinitialized;
+
 namespace Emiriusu {
 
     Application::Application () {
 
         glfwSetErrorCallback (error_callback);
 
-        if (!glfwInit ()) {
-            std::cout << "Initialization failed!\n";
-            exit (EXIT_FAILURE);
-        }
-
-        int width = 640, height = 480;
-        window = new Window ("Emiriusu2", width, height);
-
-        if (!window) {
-            std::cout << "Can not create a window!\n";
-            exit (EXIT_FAILURE);
-        }
+        window = Window::Create ();
     }
 
     Application::~Application () {
 
         delete window;
+        if (isGLFWinitialized) glfwTerminate ();
     }
 
     void Application::PollEvents () {
 
-        window->PollEvents();
     }
 
     void Application::DispatchEvents () {
         
-        Event* ev;
+        /*Event* ev;
 
         while ((ev = EventDispatcher::EventSystem().Dispatch (EventCategoryApplication)) != nullptr) {
             switch (ev->GetEventType ()) {
@@ -50,15 +41,14 @@ namespace Emiriusu {
             }
 
             delete ev;
-        }
+        }*/
     }
 
     void Application::Run () {
 
-        while (!window->isClosed()) {
+        while (running) {
             
-            PollEvents ();
-            DispatchEvents ();
+            window->OnUpdate ();
         }
     }
 }
