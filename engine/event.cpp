@@ -7,9 +7,9 @@ namespace Emiriusu {
         return instance;
     }
 
-    void EventDispatcher::Report (Event* event) {
+    void EventDispatcher::Report (Event* newEvent) {
         
-        queueEvents.push_back (event);
+        queueEvents.push_back (newEvent);
     }
 
     Event* EventDispatcher::Dispatch (EventCategory category) {
@@ -27,7 +27,7 @@ namespace Emiriusu {
             }
         }
 
-        return new EventNone ();
+        return nullptr;
     }
 
 }

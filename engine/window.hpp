@@ -19,7 +19,7 @@ namespace Emiriusu {
 
     public:
 
-        Window (std::string name, int width, int height);
+        Window (std::string initialName, int initialWidth, int initialHeight);
         ~Window ();
 
         bool isClosed ();

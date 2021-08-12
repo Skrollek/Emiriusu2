@@ -8,10 +8,10 @@ namespace Emiriusu {
             EventDispatcher::EventSystem().Report (new WindowCloseEvent ());
     }
 
-    Window::Window (std::string name, int width, int height) {
+     Window::Window (std::string initialName, int initialWidth, int initialHeight) {
 
-        this->width = width;
-        this->height = height;
+        width = initialWidth;
+        height = initialHeight;
         
         glWindow = glfwCreateWindow (width, height, "Emiriusu2", NULL, NULL);
 

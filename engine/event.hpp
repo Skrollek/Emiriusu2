@@ -4,6 +4,7 @@
 #define BIT(x) (1 << x) 
 
 #include <vector>
+#include <list>
 
 namespace Emiriusu {
 
@@ -15,7 +16,7 @@ namespace Emiriusu {
     };
 
     enum EventCategory {
-        EventCategoryNone = 0,
+        EventCategoryNone = BIT(0),
         EventCategoryApplication = BIT(1),
         EventCategoryInput = BIT(2),
         EventCategoryMouse = BIT(3),
@@ -50,7 +51,7 @@ namespace Emiriusu {
 
     class EventDispatcher {
 
-        std::vector <Event*> queueEvents;
+        std::list <Event*> queueEvents;
 
         EventDispatcher () {}
         EventDispatcher (const EventDispatcher& ) {}
@@ -60,18 +61,8 @@ namespace Emiriusu {
 
         static EventDispatcher& EventSystem ();
 
-        void Report (Event* event);
+        void Report (Event* newEvent);
         Event* Dispatch (EventCategory category);
-    };
-
-    class EventNone : public Event {
-
-    public:
-
-        EventNone () {}
-
-        EVENT_TYPE (None);
-        EVENT_CATTEGORY (EventCategoryNone);
     };
 }
 

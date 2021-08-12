@@ -38,7 +38,7 @@ namespace Emiriusu {
         
         Event* ev;
 
-        while ((ev = EventDispatcher::EventSystem().Dispatch (EventCategoryApplication))->GetEventType () != EventType::None) {
+        while ((ev = EventDispatcher::EventSystem().Dispatch (EventCategoryApplication)) != nullptr) {
             switch (ev->GetEventType ()) {
                 case EventType::WindowResized: break;
                 case EventType::WindowMoved: break;
@@ -51,8 +51,6 @@ namespace Emiriusu {
 
             delete ev;
         }
-
-        delete ev;
     }
 
     void Application::Run () {
