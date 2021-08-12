@@ -1,8 +1,8 @@
 all: windows
 
 windows:
-	make -j2 -f ./engine/Makefile
-	make -j2 -f ./src/Makefile
+	make -j4 -f ./engine/Makefile
+	make -j4 -f ./src/Makefile
 
 linux:
 	echo "Emiriusu currently does not support Linux"

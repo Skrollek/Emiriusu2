@@ -1,7 +1,7 @@
 #ifndef EMIRIUSU_HPP
 #define EMIRIUSU_HPP
 
-#include "engine.hpp"
+#include "app.hpp"
 
 extern Emiriusu::Application* Emiriusu::ApplicationNew ();
 

@@ -1,9 +1,7 @@
-#ifndef EMIRIUSU_ENGINE_HPP
-#define EMIRIUSU_ENGINE_HPP
+#ifndef EMIRIUSU_APP_HPP
+#define EMIRIUSU_APP_HPP
 
-#define GLFW_INCLUDE_NONE
-#include <GLFW/glfw3.h>
-#include <GL/gl.h>
+#include "window.hpp"
 
 #include <iostream>
 
@@ -16,13 +14,16 @@ namespace Emiriusu {
         int width;
         int height;
 
-        GLFWwindow* window;
+        Window* window;
+
+        void PollEvents ();
 
     public:
 
         Application ();
         virtual ~Application ();
 
+        virtual void DispatchEvents ();
         void Run ();
     };
 
