@@ -51,6 +51,8 @@ namespace Emiriusu {
 
             delete ev;
         }
+
+        delete ev;
     }
 
     void Application::Run () {
