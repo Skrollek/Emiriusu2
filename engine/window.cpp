@@ -8,7 +8,7 @@ namespace Emiriusu {
             EventDispatcher::EventSystem().Report (new WindowCloseEvent ());
     }
 
-     Window::Window (std::string initialName, int initialWidth, int initialHeight) {
+    Window::Window (std::string initialName, int initialWidth, int initialHeight) {
 
         width = initialWidth;
         height = initialHeight;
