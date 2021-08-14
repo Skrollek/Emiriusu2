@@ -25,7 +25,7 @@ namespace Emiriusu {
     class Window {
 
     public:
-        using EventCallbackFunction = std::function<void(Event*)>;
+        using EventCallbackFunction = std::function<void(Event&)>;
 
         virtual ~Window () {}
         virtual void OnUpdate () = 0;
@@ -33,7 +33,7 @@ namespace Emiriusu {
         virtual int GetWidth () const = 0;
         virtual int GetHeight () const = 0;
 
-        virtual void SetEventCallback (const EventCallbackFunction* newCallback) = 0;
+        virtual void SetEventCallback (const EventCallbackFunction& newCallback) = 0;
         virtual void SetVSync (bool enabled) = 0;
         virtual bool IsVSync () const = 0;
 

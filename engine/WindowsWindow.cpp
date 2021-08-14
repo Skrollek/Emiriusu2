@@ -1,6 +1,7 @@
 #include "WindowsWindow.hpp"
 
 #include <iostream>
+#include <GLFW/glfw3.h>
 
 extern bool isGLFWinitialized;
 
@@ -32,8 +33,25 @@ namespace Emiriusu {
 
         glfwMakeContextCurrent (glWindow);
         glfwSetWindowUserPointer (glWindow, &data);
-        //glfwSetKeyCallback (glWindow, key_callback);
         SetVSync (true);
+
+        glfwSetWindowSizeCallback(glWindow, [](GLFWwindow* window, int width, int height)
+        {
+            WindowData* callbackedData = (WindowData*)glfwGetWindowUserPointer(window);
+            
+            callbackedData->width = width;
+            callbackedData->height = height;
+            
+            WindowResizeEvent event(width, height);
+            callbackedData->eventCallback(event);
+        });
+        glfwSetWindowCloseCallback(glWindow, [](GLFWwindow* window)
+        {
+            WindowData* callbackedData = (WindowData*)glfwGetWindowUserPointer(window);
+            WindowCloseEvent event;
+            callbackedData->eventCallback(event);
+        });
+        //glfwSetKeyCallback (glWindow, key_callback);
     }
 
     WindowsWindow::~WindowsWindow () {

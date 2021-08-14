@@ -23,6 +23,7 @@ namespace Emiriusu {
 
         virtual void DispatchEvents ();
         void Run ();
+        void onEvent(Event& newEvent);
     };
 
     Application* ApplicationNew ();

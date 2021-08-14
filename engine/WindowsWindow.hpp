@@ -35,7 +35,7 @@ namespace Emiriusu {
         inline int GetWidth () const override { return data.width; }
         inline int GetHeight () const override { return data.height; }
 
-        inline void SetEventCallback(const EventCallbackFunction* newCallback) override {data.eventCallback = *newCallback;}
+        inline void SetEventCallback(const EventCallbackFunction& newCallback) override {data.eventCallback = newCallback;}
         void SetVSync (bool enabled) override;
         bool IsVSync () const override { return data.VSync; }
     };

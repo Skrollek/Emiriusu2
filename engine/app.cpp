@@ -8,18 +8,24 @@ extern bool isGLFWinitialized;
 
 namespace Emiriusu {
 
+#define BIND_EVENT_FUNCTIONN(x) std::bind(&x, this, std::placeholders::_1)
+
     Application::Application () {
 
         glfwSetErrorCallback (error_callback);
 
         window = Window::Create ();
-        //window-> SetEventCallback();
+        window-> SetEventCallback(BIND_EVENT_FUNCTIONN(Application::onEvent));
     }
 
     Application::~Application () {
 
         delete window;
-        if (isGLFWinitialized) glfwTerminate ();
+        if (isGLFWinitialized)
+        {
+            glfwTerminate ();
+            isGLFWinitialized = false;
+        } 
     }
 
     void Application::PollEvents () {
@@ -52,5 +58,10 @@ namespace Emiriusu {
             glClear(GL_COLOR_BUFFER_BIT);
             window->OnUpdate ();
         }
+    }
+
+    void Application::onEvent(Event& newEvent)
+    {
+        std::cout << "Application::onEvent called\n";
     }
 }
