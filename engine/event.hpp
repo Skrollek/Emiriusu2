@@ -51,7 +51,7 @@ namespace Emiriusu {
 
     class EventDispatcher {
 
-        std::list <Event*> queueEvents;
+        std::vector <Event*> queueEvents;
 
         EventDispatcher () {}
         EventDispatcher (const EventDispatcher& ) {}
@@ -61,7 +61,7 @@ namespace Emiriusu {
 
         static EventDispatcher& EventSystem ();
 
-        void Report (Event* newEvent);
+        void Report (Event* event);
         Event* Dispatch (EventCategory category);
     };
 }

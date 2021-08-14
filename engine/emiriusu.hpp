@@ -2,6 +2,7 @@
 #define EMIRIUSU_HPP
 
 #include "app.hpp"
+#include "WindowsWindow.hpp"
 
 extern Emiriusu::Application* Emiriusu::ApplicationNew ();
 

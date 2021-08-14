@@ -21,6 +21,8 @@ namespace Emiriusu {
                 std::cout << "Initialization failed!\n";
                 exit (EXIT_FAILURE);
             }
+            else
+                std::cout << "All right\n";
 
             isGLFWinitialized = true;
         }
@@ -35,7 +37,6 @@ namespace Emiriusu {
     }
 
     WindowsWindow::~WindowsWindow () {
-
         glfwDestroyWindow (glWindow);
     }
 

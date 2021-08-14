@@ -13,6 +13,7 @@ namespace Emiriusu {
         glfwSetErrorCallback (error_callback);
 
         window = Window::Create ();
+        //window-> SetEventCallback();
     }
 
     Application::~Application () {
@@ -47,7 +48,8 @@ namespace Emiriusu {
     void Application::Run () {
 
         while (running) {
-            
+            glClearColor(0.2578, 0.52734, 0.9570, 1);
+            glClear(GL_COLOR_BUFFER_BIT);
             window->OnUpdate ();
         }
     }
