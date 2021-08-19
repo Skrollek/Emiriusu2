@@ -15,6 +15,7 @@ namespace Emiriusu {
         Window* window;
 
         void PollEvents ();
+        bool onWindowClose(WindowCloseEvent& newEvent);
 
     public:
 

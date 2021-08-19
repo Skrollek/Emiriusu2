@@ -5,6 +5,7 @@
 
 #include <vector>
 #include <list>
+#include <functional>
 
 namespace Emiriusu {
 
@@ -49,7 +50,26 @@ namespace Emiriusu {
         bool wasHandled = false;
     };
 
-    class EventDispatcher {
+    class EventDispatcher
+    {
+        template<typename T>
+        using EventFunction = std::function<bool(T&)>;
+        Event& event;
+    public:
+        EventDispatcher(Event& initialEvent) : event(initialEvent){}
+        template <typename T>
+        bool Dispatch(EventFunction<T> function)
+        {
+            if(event.GetEventType() == T::GetStaticEventType())
+            {
+                event.wasHandled = function(*(T*)&event);
+                return true;
+            }
+            return false;
+        }
+    };
+
+    /*class EventDispatcher {
 
         std::vector <Event*> queueEvents;
 
@@ -63,7 +83,8 @@ namespace Emiriusu {
 
         void Report (Event* event);
         Event* Dispatch (EventCategory category);
-    };
+        //bool Dispatch()
+    };*/
 }
 
 #endif

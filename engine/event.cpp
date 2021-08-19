@@ -2,16 +2,16 @@
 
 namespace Emiriusu {
 
-    EventDispatcher& EventDispatcher::EventSystem () {
+    /*EventDispatcher& EventDispatcher::EventSystem () {
         static EventDispatcher instance;
         return instance;
-    }
+    }*/
 
-    void EventDispatcher::Report (Event* newEvent) {
+    /*void EventDispatcher::Report (Event* newEvent) {
         
         queueEvents.push_back (newEvent);
-    }
-
+    }*/
+    /*
     Event* EventDispatcher::Dispatch (EventCategory category) {
 
         auto itend = queueEvents.end ();
@@ -28,6 +28,6 @@ namespace Emiriusu {
         }
 
         return nullptr;
-    }
+    }*/
 
 }

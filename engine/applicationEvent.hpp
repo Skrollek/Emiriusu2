@@ -6,6 +6,7 @@
 
 namespace Emiriusu {
 
+
     class WindowResizeEvent : public Event {
 
         int width, height;

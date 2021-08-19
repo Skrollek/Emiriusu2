@@ -7,6 +7,32 @@ extern bool isGLFWinitialized;
 
 namespace Emiriusu {
 
+    static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
+    {
+        //WindowData* callbackedData = (WindowData*)glfwGetWindowUserPointer(window);
+        switch (action)
+        {
+            case GLFW_PRESS:
+                {
+                    //KeyPressedEvent
+                    std::cout << "Key pressed\n";
+                    break;
+                }
+            case GLFW_RELEASE:
+                {
+                    std::cout << "Key released\n";
+                    break;
+                }
+            case GLFW_REPEAT:
+                {
+                    std::cout << "Key repeated\n";
+                    break;
+                }
+            default:
+                break;
+        }
+    }
+
     Window* Window::Create (const WindowProps& props) {
         return new WindowsWindow (props);
     }
@@ -51,7 +77,10 @@ namespace Emiriusu {
             WindowCloseEvent event;
             callbackedData->eventCallback(event);
         });
-        //glfwSetKeyCallback (glWindow, key_callback);
+        glfwSetKeyCallback (glWindow, keyCallback);
+        //glfwSetMouseButtonCallback();
+        //glfwSetScrollCallback();
+        //glfwSetCursorPosCallback();
     }
 
     WindowsWindow::~WindowsWindow () {

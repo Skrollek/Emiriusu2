@@ -8,14 +8,14 @@ extern bool isGLFWinitialized;
 
 namespace Emiriusu {
 
-#define BIND_EVENT_FUNCTIONN(x) std::bind(&x, this, std::placeholders::_1)
+#define BIND_EVENT_FUNCTION(x) std::bind(&x, this, std::placeholders::_1)
 
     Application::Application () {
 
         glfwSetErrorCallback (error_callback);
 
         window = Window::Create ();
-        window-> SetEventCallback(BIND_EVENT_FUNCTIONN(Application::onEvent));
+        window-> SetEventCallback(BIND_EVENT_FUNCTION(Application::onEvent));
     }
 
     Application::~Application () {
@@ -62,6 +62,14 @@ namespace Emiriusu {
 
     void Application::onEvent(Event& newEvent)
     {
+        EventDispatcher dispatcher(newEvent);
+        dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FUNCTION(Application::onWindowClose));
         std::cout << "Application::onEvent called\n";
+    }
+
+    bool Application::onWindowClose(WindowCloseEvent& newEvent)
+    {
+        running = false;
+        return true;
     }
 }
