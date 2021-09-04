@@ -4,12 +4,12 @@
 #include "app.hpp"
 #include "WindowsWindow.hpp"
 
-extern Emiriusu::Application* Emiriusu::ApplicationNew ();
+extern Emiriusu::Application* Emiriusu::applicationNew ();
 
 int main (int argc, char** argv) {
     
-    auto app = Emiriusu::ApplicationNew ();
-    app->Run ();
+    auto app = Emiriusu::applicationNew ();
+    app->run();
     delete app;
 
     return 0;

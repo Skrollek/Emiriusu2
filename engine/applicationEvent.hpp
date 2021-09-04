@@ -15,8 +15,8 @@ namespace Emiriusu {
 
         WindowResizeEvent (int newWidth, int newHeight) : width (newWidth), height (newHeight) {}
 
-        inline int GetWindowWidth () const { return width; }
-        inline int GetWindowHeight () const { return height; }
+        inline int getWindowWidth () const { return width; }
+        inline int getWindowHeight () const { return height; }
 
         EVENT_TYPE (WindowResized);
         EVENT_CATTEGORY (EventCategoryApplication);
@@ -31,9 +31,9 @@ namespace Emiriusu {
         WindowMoveEvent (int x, int y) : position (x, y) {};
         WindowMoveEvent (Vec2i& newPosition) : position (newPosition) {};
 
-        inline int GetPositionX () const { return position.x; }
-        inline int GetPositionY () const { return position.y; }
-        inline Vec2i& GetPosition () { return position; }
+        inline int getPositionX () const { return position.x; }
+        inline int getPositionY () const { return position.y; }
+        inline Vec2i& getPosition () { return position; }
 
 
         EVENT_TYPE (WindowMoved);

@@ -14,7 +14,7 @@ namespace Emiriusu {
 
         Window* window;
 
-        void PollEvents ();
+        void pollEvents ();
         bool onWindowClose(WindowCloseEvent& newEvent);
 
     public:
@@ -22,12 +22,12 @@ namespace Emiriusu {
         Application ();
         virtual ~Application ();
 
-        virtual void DispatchEvents ();
-        void Run ();
+        virtual void dispatchEvents ();
+        void run ();
         void onEvent(Event& newEvent);
     };
 
-    Application* ApplicationNew ();
+    Application* applicationNew ();
 }
 
 #endif

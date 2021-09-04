@@ -14,7 +14,7 @@ namespace Emiriusu {
 
         GLFWwindow* glWindow;
 
-        void Init (const WindowProps& props);
+        void init (const WindowProps& props);
 
         struct WindowData {
 
@@ -30,14 +30,14 @@ namespace Emiriusu {
         WindowsWindow (const WindowProps& props);
         virtual ~WindowsWindow ();
 
-        void OnUpdate () override;
+        void onUpdate () override;
 
-        inline int GetWidth () const override { return data.width; }
-        inline int GetHeight () const override { return data.height; }
+        inline int getWidth () const override { return data.width; }
+        inline int getHeight () const override { return data.height; }
 
-        inline void SetEventCallback(const EventCallbackFunction& newCallback) override {data.eventCallback = newCallback;}
-        void SetVSync (bool enabled) override;
-        bool IsVSync () const override { return data.VSync; }
+        inline void setEventCallback(const EventCallbackFunction& newCallback) override {data.eventCallback = newCallback;}
+        void setVSync (bool enabled) override;
+        bool isVSync () const override { return data.VSync; }
     };
 
 }

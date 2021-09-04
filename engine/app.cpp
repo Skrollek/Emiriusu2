@@ -14,8 +14,8 @@ namespace Emiriusu {
 
         glfwSetErrorCallback (error_callback);
 
-        window = Window::Create ();
-        window-> SetEventCallback(BIND_EVENT_FUNCTION(Application::onEvent));
+        window = Window::create ();
+        window-> setEventCallback(BIND_EVENT_FUNCTION(Application::onEvent));
     }
 
     Application::~Application () {
@@ -28,11 +28,11 @@ namespace Emiriusu {
         } 
     }
 
-    void Application::PollEvents () {
+    void Application::pollEvents () {
 
     }
 
-    void Application::DispatchEvents () {
+    void Application::dispatchEvents () {
         
         /*Event* ev;
 
@@ -51,19 +51,19 @@ namespace Emiriusu {
         }*/
     }
 
-    void Application::Run () {
+    void Application::run () {
 
         while (running) {
             glClearColor(0.2578, 0.52734, 0.9570, 1);
             glClear(GL_COLOR_BUFFER_BIT);
-            window->OnUpdate ();
+            window->onUpdate ();
         }
     }
 
     void Application::onEvent(Event& newEvent)
     {
         EventDispatcher dispatcher(newEvent);
-        dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FUNCTION(Application::onWindowClose));
+        dispatcher.dispatch<WindowCloseEvent>(BIND_EVENT_FUNCTION(Application::onWindowClose));
         std::cout << "Application::onEvent called\n";
     }
 

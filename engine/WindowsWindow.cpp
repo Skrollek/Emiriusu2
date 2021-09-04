@@ -33,7 +33,7 @@ namespace Emiriusu {
         }
     }
 
-    Window* Window::Create (const WindowProps& props) {
+    Window* Window::create (const WindowProps& props) {
         return new WindowsWindow (props);
     }
 
@@ -59,7 +59,7 @@ namespace Emiriusu {
 
         glfwMakeContextCurrent (glWindow);
         glfwSetWindowUserPointer (glWindow, &data);
-        SetVSync (true);
+        setVSync (true);
 
         glfwSetWindowSizeCallback(glWindow, [](GLFWwindow* window, int width, int height)
         {
@@ -87,13 +87,13 @@ namespace Emiriusu {
         glfwDestroyWindow (glWindow);
     }
 
-    void WindowsWindow::OnUpdate () {
+    void WindowsWindow::onUpdate () {
 
         glfwPollEvents ();
         glfwSwapBuffers (glWindow);
     }
 
-    void WindowsWindow::SetVSync (bool enabled) {
+    void WindowsWindow::setVSync (bool enabled) {
         
         if (enabled) glfwSwapInterval (1);
         else glfwSwapInterval (0);

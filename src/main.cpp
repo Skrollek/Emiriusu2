@@ -9,7 +9,7 @@ public:
     ~TheAStrategicGame () {}
 };
 
-Emiriusu::Application* Emiriusu::ApplicationNew () {
+Emiriusu::Application* Emiriusu::applicationNew () {
 
     return new TheAStrategicGame ();
 }

@@ -25,11 +25,11 @@ namespace Emiriusu {
         EventCategoryKey = BIT(5)
     };
 
-#define EVENT_TYPE(x) static EventType GetStaticEventType() {return EventType::x; }\
-                        virtual EventType GetEventType() const override {return GetStaticEventType(); }\
-                        virtual const char* GetName() const override {return #x; }
+#define EVENT_TYPE(x) static EventType getStaticEventType() {return EventType::x; }\
+                        virtual EventType getEventType() const override {return getStaticEventType(); }\
+                        virtual const char* getName() const override {return #x; }
 
-#define EVENT_CATTEGORY(x) virtual int GetEventCategory() const override {return x;}
+#define EVENT_CATTEGORY(x) virtual int getEventCategory() const override {return x;}
 
     class Event {
 
@@ -37,13 +37,13 @@ namespace Emiriusu {
 
     public:
 
-        virtual EventType GetEventType () const = 0;
-        virtual const char* GetName () const = 0;
-        virtual int GetEventCategory () const = 0;
+        virtual EventType getEventType () const = 0;
+        virtual const char* getName () const = 0;
+        virtual int getEventCategory () const = 0;
 
         virtual ~Event () {}
 
-        inline bool IsInCateogry (EventCategory category) const { return GetEventCategory () & category; }
+        inline bool isInCateogry (EventCategory category) const { return getEventCategory () & category; }
 
     protected:
 
@@ -58,9 +58,9 @@ namespace Emiriusu {
     public:
         EventDispatcher(Event& initialEvent) : event(initialEvent){}
         template <typename T>
-        bool Dispatch(EventFunction<T> function)
+        bool dispatch(EventFunction<T> function)
         {
-            if(event.GetEventType() == T::GetStaticEventType())
+            if(event.getEventType() == T::getStaticEventType())
             {
                 event.wasHandled = function(*(T*)&event);
                 return true;
